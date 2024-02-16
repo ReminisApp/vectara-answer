@@ -1,11 +1,11 @@
 import { forwardRef } from "react";
 import {
-  VuiText,
-  VuiTextColor,
-  VuiFlexContainer,
-  VuiFlexItem,
-  VuiBadge,
-  VuiSearchResult,
+    VuiText,
+    VuiTextColor,
+    VuiFlexContainer,
+    VuiFlexItem,
+    VuiBadge,
+    VuiSearchResult,
 } from "../../../ui";
 import { truncateEnd, truncateStart } from "../../../ui/utils/truncateString";
 import { useSearchContext } from "../../../contexts/SearchContext";
@@ -29,6 +29,11 @@ export const SearchResult = forwardRef<HTMLDivElement | null, Props>(
     const {
       source,
       title,
+        bibtex,
+      authors,
+      doi,
+      year,
+        pdfname,
       url,
       snippet: { pre, post, text },
     } = result;
@@ -40,6 +45,11 @@ export const SearchResult = forwardRef<HTMLDivElement | null, Props>(
         result={{
           title,
           url,
+            bibtex,
+            authors,
+            doi,
+            year,
+            pdfname,
           snippet: {
             pre: truncateStart(pre, CONTEXT_MAX_LENGTH),
             text,
@@ -81,6 +91,32 @@ export const SearchResult = forwardRef<HTMLDivElement | null, Props>(
                   </VuiText>
                 </VuiFlexItem>
               )}
+
+                {year && (
+                    <VuiFlexItem grow={1}>
+                        <VuiText size="s" className="searchResultSiteCategory">
+                            <p>
+                                <VuiTextColor color="subdued">{year}</VuiTextColor>
+                            </p>
+                        </VuiText>
+                    </VuiFlexItem>
+                )}
+                {pdfname && (
+                    <VuiFlexItem grow={1}>
+                        <VuiText size="s" className="searchResultSiteCategory">
+                            <p>
+                                <VuiTextColor color="subdued">{pdfname}</VuiTextColor>
+                            </p>
+                        </VuiText>
+                    </VuiFlexItem>
+                )}
+                {/*{doi && (
+                    <VuiFlexItem>
+                        <VuiButtonSecondary color="neutral" size="s" onClick={() => {onSearch({ doiQ: doi })}}>
+                            Filter results by this paper
+                        </VuiButtonSecondary>
+                    </VuiFlexItem>
+                )}*/}
             </VuiFlexContainer>
           )
         }

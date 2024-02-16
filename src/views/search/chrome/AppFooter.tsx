@@ -27,10 +27,7 @@ export const AppFooter = () => {
 
             <VuiText>
               <p>
-                We made this to show off Vectara's conversational search
-                capabilities. But you can use Vectara to ask your own data
-                questions, too. Vectara is free to use so it's easy to get
-                started.
+                Keymate.AI allows you to build research bases like this and ground AI responses on ChatGPT based on the search and summary results shown here.
               </p>
             </VuiText>
 
@@ -40,26 +37,26 @@ export const AppFooter = () => {
               <VuiButtonPrimary
                 color="accent"
                 size="m"
-                href="https://console.vectara.com/"
+                href="https://help.keymate.ai"
                 target="_blank"
               >
-                Try Vectara now
+                Learn More About Keymate
               </VuiButtonPrimary>
             </div>
           </VuiFlexItem>
 
           <VuiFlexItem grow={5}>
             <VuiTitle size="s">
-              <h3>A conversational search API platform</h3>
+              <h3>An all in one AI Research platform</h3>
             </VuiTitle>
 
             <VuiSpacer size="m" />
 
             <VuiText>
               <p>
-                Vectara is an API platform for developers. It features
-                best-in-class retrieval and summarization. The best part is we
-                built in grounded generation which all but eliminates
+                Keymate.AI is a AI tools platform for researchers. It features
+                best-in-class tools no-code or coding tools, API, GPT, SDK and more. The best part is we
+                use a grounded generation which all but eliminates
                 hallucinations.
               </p>
             </VuiText>
@@ -70,16 +67,16 @@ export const AppFooter = () => {
               <VuiFlexItem grow={5}>
                 <VuiText>
                   <p>
-                    <VuiLink href="https://vectara.com/" target="_blank">
-                      Vectara
+                    <VuiLink href="https://keymate.ai" target="_blank">
+                      Keymate.AI
                     </VuiLink>
                   </p>
                   <p>
                     <VuiLink
-                      href="https://discord.gg/GFb8gMz6UH"
+                      href="https://chat.openai.com/g/g-veSrMmasJ-keymate-ai-gpt"
                       target="_blank"
                     >
-                      Discord
+                      Keymate.AI GPT
                     </VuiLink>
                   </p>
                 </VuiText>
@@ -88,17 +85,17 @@ export const AppFooter = () => {
               <VuiFlexItem grow={5}>
                 <VuiText>
                   <p>
-                    <VuiLink href="https://docs.vectara.com/" target="_blank">
-                      Docs
+                    <VuiLink href="https://help.keymate.ai" target="_blank">
+                      Keymate.AI Help Docs
                     </VuiLink>
                   </p>
 
                   <p>
                     <VuiLink
-                      href="https://discuss.vectara.com/"
+                      href="https://www.keymate.ai/ultimate-landing/"
                       target="_blank"
                     >
-                      Forums
+                      Keymate.AI Ultimate
                     </VuiLink>
                   </p>
                 </VuiText>

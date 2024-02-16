@@ -7,6 +7,7 @@ import {
   useEffect,
   useRef,
 } from "react";
+
 import { useSearchParams } from "react-router-dom";
 import {
   DeserializedSearchResult,
@@ -25,6 +26,8 @@ import {
 import { deserializeSearchResponse } from "../utils/deserializeSearchResponse";
 
 interface SearchContextType {
+  memidValue: string;
+  setMemidValue: (memid: string) => void;
   filterValue: string;
   setFilterValue: (source: string) => void;
   searchValue: string;
@@ -34,11 +37,15 @@ interface SearchContextType {
     filter,
     language,
     isPersistable,
+      memid,
+      doiQ
   }: {
     value?: string;
     filter?: string;
+    memid?: string;
     language?: SummaryLanguage;
     isPersistable?: boolean;
+    doiQ?: string;
   }) => void;
   reset: () => void;
   isSearching: boolean;
@@ -60,6 +67,8 @@ interface SearchContextType {
   searchResultsRef: React.MutableRefObject<HTMLElement[] | null[]>;
   selectedSearchResultPosition: number | undefined;
   selectSearchResultAt: (position: number) => void;
+  doiQValue: string;
+  setdoiQValue: (source: string) => void;
 }
 
 const SearchContext = createContext<SearchContextType | undefined>(undefined);
@@ -72,18 +81,20 @@ const getQueryParam = (urlParams: URLSearchParams, key: string) => {
 
 type Props = {
   children: ReactNode;
+  memid: string | null;
 };
 
 let searchCount = 0;
 
-export const SearchContextProvider = ({ children }: Props) => {
+export const SearchContextProvider = ({ children, memid }: Props) => {
   const { isConfigLoaded, search, summary, rerank, hybrid, uxMode } =
     useConfigContext();
   const isSummaryEnabled = uxMode === "summary";
 
   const [searchValue, setSearchValue] = useState<string>("");
   const [filterValue, setFilterValue] = useState("");
-
+  const [doiQValue, setdoiQValue] = useState("");
+  const [memidValue, setMemidValue] = useState(memid ?? ""); //memid hardcoded for now
   const [searchParams, setSearchParams] = useSearchParams();
 
   // Language
@@ -130,6 +141,8 @@ export const SearchContextProvider = ({ children }: Props) => {
       // Set to an empty string to wipe out any existing search value.
       value: getQueryParam(urlParams, "query") ?? "",
       filter: getQueryParam(urlParams, "filter"),
+      memid: getQueryParam(urlParams, "memid"),
+      doiQ: getQueryParam(urlParams, "doiQ"),
       language: getQueryParam(urlParams, "language") as
         | SummaryLanguage
         | undefined,
@@ -179,23 +192,29 @@ export const SearchContextProvider = ({ children }: Props) => {
   const onSearch = async ({
     value = searchValue,
     filter = filterValue,
+      memid = memidValue,
     language = getLanguage(),
     isPersistable = true,
+      doiQ = doiQValue
   }: {
     value?: string;
     filter?: string;
     language?: SummaryLanguage;
+    memid?: string;
     isPersistable?: boolean;
+    doiQ?: string;
   }) => {
     const searchId = ++searchCount;
 
     setSearchValue(value);
     setFilterValue(filter);
+    setdoiQValue(doiQ);
+    setMemidValue(memid);
     setLanguageValue(language);
 
     if (value?.trim()) {
       // Save to history.
-      setHistory(addHistoryItem({ query: value, filter, language }, history));
+      setHistory(addHistoryItem({ query: value, filter, language, memid, doiQ }, history));
 
       // Persist to URL, only if the search executes. This way the prior
       // search that was persisted remains in the URL if the search doesn't execute.
@@ -204,7 +223,7 @@ export const SearchContextProvider = ({ children }: Props) => {
           new URLSearchParams(
             `?query=${encodeURIComponent(value)}&filter=${encodeURIComponent(
               filter
-            )}&language=${encodeURIComponent(language)}`
+            )}&memid=${encodeURIComponent(memid)}&language=${encodeURIComponent(language)}&doiQ=${encodeURIComponent(doiQ)}`
           )
         );
       }
@@ -232,6 +251,8 @@ export const SearchContextProvider = ({ children }: Props) => {
           corpusId: search.corpusId!,
           endpoint: search.endpoint!,
           apiKey: search.apiKey!,
+          memid: memid,
+          doiQValue: doiQ
         });
         const totalTime = Date.now() - startTime;
 
@@ -246,8 +267,10 @@ export const SearchContextProvider = ({ children }: Props) => {
             setSearchError(undefined);
           } else {
             setSearchError({
-              message: "There weren't any results for your search.",
+              message: "There weren't any results for your search. Try changing filters. ",
             });
+
+
           }
         }
       } catch (error) {
@@ -281,6 +304,8 @@ export const SearchContextProvider = ({ children }: Props) => {
               corpusId: search.corpusId!,
               endpoint: search.endpoint!,
               apiKey: search.apiKey!,
+              memid: memid,
+              doiQValue: doiQ
             });
             const totalTime = Date.now() - startTime;
 
@@ -308,7 +333,9 @@ export const SearchContextProvider = ({ children }: Props) => {
       }
     } else {
       // Persist to URL.
-      if (isPersistable) setSearchParams(new URLSearchParams(""));
+      console.log("found memid at searchcontext")
+      console.log("memid: "+memid)
+      if (isPersistable) setSearchParams(new URLSearchParams("?memid="+memid));
 
       setSearchResponse(undefined);
       setSummarizationResponse(undefined);
@@ -328,6 +355,8 @@ export const SearchContextProvider = ({ children }: Props) => {
       value={{
         filterValue,
         setFilterValue,
+        memidValue,
+        setMemidValue,
         searchValue,
         setSearchValue,
         onSearch,
@@ -351,6 +380,8 @@ export const SearchContextProvider = ({ children }: Props) => {
         searchResultsRef,
         selectedSearchResultPosition,
         selectSearchResultAt,
+        doiQValue,
+        setdoiQValue
       }}
     >
       {children}

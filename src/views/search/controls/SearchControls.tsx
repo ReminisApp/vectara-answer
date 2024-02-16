@@ -9,7 +9,6 @@ import {
   VuiTitle,
   VuiTextColor,
   VuiText,
-  VuiBadge,
   VuiIcon,
   VuiButtonSecondary,
   VuiLink,
@@ -24,7 +23,7 @@ type Props = {
 };
 
 export const SearchControls = ({ hasQuery }: Props) => {
-  const { filterValue, setFilterValue, searchValue, setSearchValue, onSearch, reset } =
+  const { filterValue, setFilterValue, searchValue, setSearchValue, onSearch, reset, doiQValue } =
     useSearchContext();
   const { searchHeader, filters } = useConfigContext();
   const [isOptionsOpen, setIsOptionsOpen] = useState(false);
@@ -52,6 +51,7 @@ export const SearchControls = ({ hasQuery }: Props) => {
     // if allSources is false, then we set the filterValue is set to the first source
     // In this case the "All sources" button is not there, and the first source is selected by default
     if (!filters.allSources && filterValue === "") {
+      console.log("filterValue", filters.sources[0].value)
       setFilterValue(filters.sources[0].value)
     }
 
@@ -174,6 +174,17 @@ export const SearchControls = ({ hasQuery }: Props) => {
                     <legend>
                       <VuiText>
                         <VuiTextColor color="subdued">
+                          <p>Results are based on this paper: {doiQValue}</p>
+                        </VuiTextColor>
+                      </VuiText>
+
+                    </legend>
+                  </VuiFlexItem>
+                  {/*
+                  <VuiFlexItem grow={false}>
+                    <legend>
+                      <VuiText>
+                        <VuiTextColor color="subdued">
                           <p>Filter by source</p>
                         </VuiTextColor>
                       </VuiText>
@@ -204,10 +215,46 @@ export const SearchControls = ({ hasQuery }: Props) => {
                         );
                       })}
                     </VuiFlexContainer>
-                  </VuiFlexItem>
+                  </VuiFlexItem>*/}
                 </VuiFlexContainer>
               </fieldset>
             </VuiFlexItem>
+          )}
+          {doiQValue && (
+              <VuiFlexItem grow={false}>
+                <fieldset>
+                  <VuiFlexContainer
+                      alignItems="center"
+                      wrap={true}
+                      spacing="xs"
+                      className="filtersBar"
+                  >
+
+
+                  </VuiFlexContainer>
+                  <VuiFlexContainer
+                      alignItems="center"
+                      wrap={true}
+                      spacing="xs"
+                      className="filtersBar"
+                  >
+
+                    {/*<VuiFlexItem grow={false}>
+                      <VuiButtonSecondary
+                          color="neutral"
+                          size="s"
+                          onClick={() =>
+                              onSearch({
+                                doiQ: "",
+                              })
+                          }
+                      >
+                        Reset paper filter
+                      </VuiButtonSecondary>
+                    </VuiFlexItem>*/}
+                  </VuiFlexContainer>
+                </fieldset>
+              </VuiFlexItem>
           )}
 
           {hasQuery && (

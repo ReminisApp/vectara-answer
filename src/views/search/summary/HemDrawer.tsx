@@ -132,22 +132,15 @@ export const HemDrawer = ({ isOpen, onClose }: Props) => {
 
       <VuiText>
         <p>
-          Vectara will evaluate generated answers for how well-grounded they are
-          in the retrieved results, using our open-source{" "}
+          Keymate.AI will evaluate generated answers for how well-grounded they are
+          in the retrieved results, using open-source{" "}
           <VuiLink
             target="_blank"
             href="https://huggingface.co/vectara/hallucination_evaluation_model/tree/main"
           >
             Hughes Hallucination Evaluation Model (HEM)
           </VuiLink>
-          . This evaluation is reported as a confidence score. Learn more about
-          this process in our{" "}
-          <VuiLink
-            target="_blank"
-            href="https://vectara.com/cut-the-bull-detecting-hallucinations-in-large-language-models/"
-          >
-            blog post
-          </VuiLink>
+          . This evaluation is reported as a confidence score.
           .
         </p>
       </VuiText>

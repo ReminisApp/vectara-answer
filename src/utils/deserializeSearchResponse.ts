@@ -33,6 +33,15 @@ export const deserializeSearchResponse = (
     const document = documents[Number(documentIndex)];
     const { id, metadata: rawMetadata } = document;
     const { source, url, title, metadata } = parseMetadata(rawMetadata);
+    console.log(metadata)
+    console.log("title"+title)
+    console.log("url"+url)
+    console.log("source"+source)
+    const doi = metadata.DOI;
+    const authors = metadata.Authors;
+    const year = metadata.Year;
+    const pdfname = metadata.PDFName;
+    const bibtex = metadata.Bibtex;
 
     results.push({
       id,
@@ -41,6 +50,11 @@ export const deserializeSearchResponse = (
         text,
         post
       },
+      year,
+      pdfname,
+      doi,
+      bibtex,
+      authors,
       source,
       url,
       title,

@@ -60,7 +60,7 @@ export const HistoryDrawer = ({ isOpen, onClose }: Props) => {
         </VuiText>
       ) : (
         <VuiMenu>
-          {history.map(({ query, filter, language, date }) => {
+          {history.map(({ query, filter, language, date, memid, doiQ }) => {
             let subTitle = date;
             if (language) {
               subTitle += ` • ${humanizeLanguage(language)}`;
@@ -72,7 +72,7 @@ export const HistoryDrawer = ({ isOpen, onClose }: Props) => {
                 title={query}
                 text={subTitle}
                 onClick={() => {
-                  onSearch({ value: query, filter, language });
+                  onSearch({ value: query, filter, language, memid, doiQ });
                   onClose();
                 }}
               />

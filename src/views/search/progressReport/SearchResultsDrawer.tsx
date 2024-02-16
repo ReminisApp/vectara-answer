@@ -77,6 +77,11 @@ export const SearchResultsDrawer = ({ isOpen, onClose }: Props) => {
             source,
             title,
             url,
+              doi,
+              pdfname,
+              year,
+              authors,
+              bibtex,
             snippet: { pre, post, text },
           } = result;
 
@@ -86,6 +91,11 @@ export const SearchResultsDrawer = ({ isOpen, onClose }: Props) => {
               result={{
                 title,
                 url,
+                doi,
+                pdfname,
+                year,
+                authors,
+                bibtex,
                 snippet: {
                   pre: truncateStart(pre, CONTEXT_MAX_LENGTH),
                   text,
@@ -94,13 +104,41 @@ export const SearchResultsDrawer = ({ isOpen, onClose }: Props) => {
               }}
               position={index + 1}
               subTitle={
-                <VuiText size="s">
+              source?
+                <><VuiText size="s">
                   <p>
                     <VuiTextColor color="subdued">
                       Source: {source}
                     </VuiTextColor>
+
                   </p>
-                </VuiText>
+                  <p>
+                    <VuiTextColor color="subdued">
+                      Year: {year}
+                    </VuiTextColor>
+                  </p>
+
+                </VuiText></>:<></>
+              }
+              subTitle2={
+                source?
+                    <><VuiText size="s">
+                      <p>
+                        <VuiTextColor color="subdued">
+                          PDFName: {pdfname}
+                        </VuiTextColor>
+                      </p>
+                      <p>
+                        <VuiTextColor color="subdued">
+                          Authors: {authors}
+                        </VuiTextColor>
+                      </p>
+                      <p>
+                        <VuiTextColor color="subdued">
+                          Bibtex: {bibtex}
+                        </VuiTextColor>
+                      </p>
+                    </VuiText></>:<></>
               }
             />
           );

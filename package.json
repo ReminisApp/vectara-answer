@@ -7,6 +7,7 @@
     "@babel/traverse": ">=7.23.2",
     "@fullstory/browser": "^1.7.1",
     "@huggingface/inference": "^2.6.4",
+    "@parse/react": "^0.0.1-alpha.18",
     "@react-oauth/google": "^0.10.0",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
@@ -25,12 +26,14 @@
     "http-proxy-middleware": "^2.0.6",
     "markdown-to-jsx": "^7.3.2",
     "nth-check": ">=2.0.1",
+    "parse": "^4.3.1",
     "prismjs": "^1.29.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-focus-on": "^3.8.1",
     "react-ga4": "^2.1.0",
     "react-icons": "^4.7.1",
+    "react-modal": "^3.16.1",
     "react-router-dom": "^6.8.2",
     "react-scripts": "^5.0.1",
     "underscore": "^1.13.6",
@@ -41,6 +44,7 @@
     "react-error-overlay": "6.0.9"
   },
   "devDependencies": {
+    "@types/parse": "^3.0.9",
     "@typescript-eslint/eslint-plugin": "^5.50.0",
     "@typescript-eslint/parser": "^5.50.0",
     "eslint": "^8.33.0",
@@ -50,7 +54,8 @@
     "plop": "^4.0.0",
     "prettier": "2.8.3",
     "pretty-quick": "^3.1.3",
-    "sass": "^1.58.0"
+    "sass": "^1.58.0",
+    "tailwindcss": "^3.4.1"
   },
   "scripts": {
     "start": "PORT=4444 react-scripts start",

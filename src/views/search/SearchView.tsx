@@ -14,6 +14,7 @@ import { useConfigContext } from "../../contexts/ConfigurationContext";
 import { SearchUx } from "./SearchUx";
 import { SummaryUx } from "./SummaryUx";
 import "./searchView.scss";
+import {useState} from "react";
 
 const uxModeToComponentMap = {
   search: <SearchUx />,
@@ -22,7 +23,7 @@ const uxModeToComponentMap = {
 
 export const SearchView = () => {
   const { isConfigLoaded, app, uxMode } = useConfigContext();
-
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const {
     isSearching,
     searchError,
@@ -64,7 +65,7 @@ export const SearchView = () => {
 
   return (
     <>
-      {app.isHeaderEnabled && <AppHeader />}
+      {app.isHeaderEnabled && <AppHeader isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />}
       <VuiFlexContainer
         className="searchView"
         direction="column"

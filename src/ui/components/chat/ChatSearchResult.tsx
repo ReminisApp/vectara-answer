@@ -8,6 +8,11 @@ export type SearchResult = {
   title?: string;
   url?: string;
   date?: string;
+    bibtex?: string;
+    authors?: string;
+    doi?: string;
+    year?: string;
+    pdfname?:string;
   snippet: {
     pre: string;
     text: string;

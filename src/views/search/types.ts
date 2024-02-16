@@ -56,6 +56,11 @@ export type DeserializedSearchResult = {
     text: string;
     post: string;
   };
+  year: string;
+  pdfname: string;
+  doi: string;
+  bibtex: string;
+  authors: string;
   source: string;
   url: string;
   title: string;

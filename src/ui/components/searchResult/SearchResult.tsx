@@ -10,6 +10,11 @@ export type SearchResult = {
   title?: string;
   url?: string;
   date?: string;
+  bibtex?: string;
+  authors?: string;
+  doi?: string;
+  year?: string;
+  pdfname?:string;
   snippet: {
     pre: string;
     text: string;
@@ -23,6 +28,7 @@ type Props = {
   isSelected?: boolean;
   subTitle?: React.ReactNode;
   children?: React.ReactNode;
+  subTitle2?: React.ReactNode;
   className?: string;
   snippetProps?: any;
 };
@@ -30,7 +36,7 @@ type Props = {
 const highlightUrl = (url: string, text: string) => `${url}#:~:text=${text}`;
 
 export const VuiSearchResult = forwardRef<HTMLDivElement | null, Props>(
-  ({ result, position, isSelected, subTitle, children, className, snippetProps, ...rest }: Props, ref) => {
+  ({ result, position, isSelected, subTitle, children, subTitle2, className, snippetProps, ...rest }: Props, ref) => {
     const {
       title,
       url,
@@ -87,6 +93,12 @@ export const VuiSearchResult = forwardRef<HTMLDivElement | null, Props>(
             {children}
           </>
         )}
+          {subTitle2 && (
+              <>
+                  {title && <VuiSpacer size="xs" />}
+                  {subTitle2}
+              </>
+          )}
       </div>
     );
   }

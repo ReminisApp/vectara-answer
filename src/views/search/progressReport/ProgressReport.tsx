@@ -162,7 +162,7 @@ export const ProgressReport = ({ isSearching, isSummarizing }: Props) => {
 
         <VuiFlexItem grow={false}>
           <VuiText>
-            <p>Generating summary</p>
+            <p>Please wait, AI is working to answer your question</p>
           </VuiText>
         </VuiFlexItem>
       </VuiFlexContainer>

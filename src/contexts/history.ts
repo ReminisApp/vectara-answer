@@ -5,6 +5,8 @@ export type HistoryItem = {
   filter: string;
   language: SummaryLanguage;
   date: string;
+  memid: string;
+  doiQ: string;
 };
 
 // eslint-disable-next-line
@@ -15,14 +17,16 @@ export const addHistoryItem = (
     query,
     filter,
     language,
-  }: { query: string; filter: string; language: SummaryLanguage },
+      memid,
+      doiQ
+  }: { query: string; filter: string; language: SummaryLanguage; memid:string, doiQ:string },
   history: HistoryItem[]
 ) => {
   const date = new Intl.DateTimeFormat("en", {
     dateStyle: "medium",
     timeStyle: "medium",
   }).format(new Date());
-  const newHistoryItem = { query, filter, language, date };
+  const newHistoryItem = { query, filter, language, date, memid, doiQ };
   const newHistory = [
     newHistoryItem,
     ...history.filter((item) => item.query !== query),

@@ -1,4 +1,5 @@
 import ReactGA from "react-ga4";
+import { useLocation } from "react-router-dom";
 import { useAuthenticationContext } from "../../../contexts/AuthenticationContext";
 import { useConfigContext } from "../../../contexts/ConfigurationContext";
 import {
@@ -8,15 +9,28 @@ import {
   VuiTextColor,
   VuiButtonTertiary,
   VuiText,
-  VuiButtonPrimary,
+  VuiButtonPrimary, VuiModal,
 } from "../../../ui";
+
 import "./appHeader.scss";
 
-export const AppHeader = () => {
+
+interface Props {
+    isModalOpen: boolean,
+    setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>
+}
+export const AppHeader = ({ isModalOpen, setIsModalOpen }: Props) => {
   const { app, appHeader } = useConfigContext();
+  const location = useLocation();
+  const copyToClipboard = () => {
+    navigator.clipboard.writeText(window.location.href)
+        .then(() => alert('Link copied!'))
+        .catch(err => console.error('Failed to copy: ', err));
+  };
+
 
   const { isAuthEnabled, logOut, user } = useAuthenticationContext();
-
+ const onClose = () => setIsModalOpen(false);
   return (
     <div className="appHeader">
       <VuiFlexContainer justifyContent="spaceBetween" alignItems="center">
@@ -68,12 +82,12 @@ export const AppHeader = () => {
               </>
             )}
 
-            {appHeader.learnMore.link && (
+            { (
               <VuiFlexItem>
                 <VuiButtonTertiary
                   color="primary"
                   size="m"
-                  href={appHeader.learnMore.link}
+                  href={"https://sci-hub.bot"}
                   target="_blank"
                   onClick={() => {
                     ReactGA.event({
@@ -83,7 +97,7 @@ export const AppHeader = () => {
                     });
                   }}
                 >
-                  {appHeader.learnMore.text ?? "About"}
+                  {appHeader.learnMore.text ?? "Chat with another DOI"}
                 </VuiButtonTertiary>
               </VuiFlexItem>
             )}
@@ -92,18 +106,38 @@ export const AppHeader = () => {
               <VuiButtonPrimary
                 color="primary"
                 size="m"
-                href="https://console.vectara.com/"
+                href={location.pathname}
                 target="_blank"
-                onClick={() => {
+                onClick={(e) => {
+                  e.preventDefault();
+                    setIsModalOpen(true);
                   ReactGA.event({
                     category: "Outbound link",
                     action: "click",
-                    label: "Try Vectara",
+                    label: "Share",
                   });
+
                 }}
               >
-                Try Vectara now
+                Share
               </VuiButtonPrimary>
+              <VuiModal color="primary" title={"Share this Search and Summary"} isOpen={isModalOpen} onClose={onClose}>
+                <div className="max-w-lg mx-auto p-6 bg-white shadow-lg rounded-lg">
+                  <div className="flex flex-col items-start space-y-4">
+                    <p className="text-sm text-gray-600">Copy this link:</p>
+                    <div className="w-full rounded-md border p-3 bg-gray-50">
+                      <a className="break-all text-blue-600 hover:text-blue-800 visited:text-purple-600" href="#" onClick={copyToClipboard}>
+                        {window.location.href}
+                      </a>
+                    </div>
+                    <div className="flex space-x-2">
+                      <VuiButtonPrimary onClick={copyToClipboard} color="primary"
+                                        size="m">Copy Link</VuiButtonPrimary>
+                      <VuiButtonPrimary onClick={onClose} color="neutral" size="m">Close</VuiButtonPrimary>
+                    </div>
+                  </div>
+                </div>
+              </VuiModal>
             </VuiFlexItem>
           </VuiFlexContainer>
         </VuiFlexItem>
