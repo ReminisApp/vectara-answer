@@ -7,6 +7,9 @@ import {
 } from "react";
 
 import axios from "axios";
+import { AnalyticsBrowser } from '@segment/analytics-next'
+
+export const segmentAnalytics = AnalyticsBrowser.load({ writeKey: 'dJI7GE43YVyFuVEnu3MBTXkFMNBEk1eM' })
 
 import {
   SummaryLanguage,
@@ -258,6 +261,7 @@ export const ConfigContextProvider = ({ children, memid }: Props) => {
   const [missingConfigProps, setMissingConfigProps] = useState<string[]>([]);
   const [uxMode, setUxMode] = useState<UxMode>("summary");
   const [search, setSearch] = useState<Search>({});
+
   const [app, setApp] = useState<App>({
     isHeaderEnabled: false,
     isFooterEnabled: false,
@@ -536,9 +540,20 @@ export const ConfigContextProvider = ({ children, memid }: Props) => {
         } else {
           if(window.location.href.includes("mem_")){
             console.log("mem exists")
+
+            segmentAnalytics.identify(memid,{"visited":"sci-hub.bot"})
+            segmentAnalytics.page("sci-hub.bot")
+            segmentAnalytics.track('sci-hub.bot')
           }
           else {
-            window.location.href = 'https://chat.openai.com/g/g-veSrMmasJ-keymate-ai-gpt';
+            if(window.location.href.includes("utm_campaign")){
+              segmentAnalytics.page("sci-hub.bot")
+              segmentAnalytics.identify(memid,{"visited":"sci-hub.bot"})
+              segmentAnalytics.track('KeymateGPTRedirect')
+            }
+
+
+            window.location.href = 'https://chat.openai.com/g/g-veSrMmasJ-keymate-ai-search-gpt';
           }
           return;
         }
@@ -550,7 +565,8 @@ export const ConfigContextProvider = ({ children, memid }: Props) => {
     loadConfig();
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [memid,window]);
+  }, [memid,window,segmentAnalytics]);
+
 
   return (
     <ConfigContext.Provider

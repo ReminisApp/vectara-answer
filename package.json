@@ -9,6 +9,7 @@
     "@huggingface/inference": "^2.6.4",
     "@parse/react": "^0.0.1-alpha.18",
     "@react-oauth/google": "^0.10.0",
+    "@segment/analytics-next": "^1.64.0",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",

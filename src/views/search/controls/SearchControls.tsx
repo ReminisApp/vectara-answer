@@ -174,7 +174,7 @@ export const SearchControls = ({ hasQuery }: Props) => {
                     <legend>
                       <VuiText>
                         <VuiTextColor color="subdued">
-                          <p>Results are based on this paper: {doiQValue}</p>
+                          <p>Results are based on: {doiQValue ? doiQValue : "All Papers"}</p>
                         </VuiTextColor>
                       </VuiText>
 

@@ -73,7 +73,7 @@ export const AppFooter = () => {
                   </p>
                   <p>
                     <VuiLink
-                      href="https://chat.openai.com/g/g-veSrMmasJ-keymate-ai-gpt"
+                      href="https://chat.openai.com/g/g-veSrMmasJ-keymate-ai-search-gpt"
                       target="_blank"
                     >
                       Keymate.AI GPT

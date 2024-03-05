@@ -1,11 +1,11 @@
-import { forwardRef } from "react";
+import React, {forwardRef, useEffect, useState} from "react";
 import {
     VuiText,
     VuiTextColor,
     VuiFlexContainer,
     VuiFlexItem,
     VuiBadge,
-    VuiSearchResult,
+    VuiSearchResult, VuiButtonSecondary,
 } from "../../../ui";
 import { truncateEnd, truncateStart } from "../../../ui/utils/truncateString";
 import { useSearchContext } from "../../../contexts/SearchContext";
@@ -23,9 +23,21 @@ const CONTEXT_MAX_LENGTH = 200;
 
 export const SearchResult = forwardRef<HTMLDivElement | null, Props>(
   ({ result, position, isSelected }: Props, ref) => {
+      const [isDoiQSet, setisDoiQSet] = useState(false);
     const { filters } = useConfigContext();
     const { onSearch } = useSearchContext();
-
+      const getQueryParam = (urlParams: URLSearchParams, key: string) => {
+          const value = urlParams.get(key);
+          if (value) return decodeURIComponent(value);
+          return undefined;
+      };
+      useEffect(() => {
+         const isDoiQSetP = getQueryParam(new URLSearchParams(window.location.search), "doiQ");
+         if (isDoiQSetP) {
+             console.log(isDoiQSetP);
+             setisDoiQSet(true);
+         }
+      }, [isDoiQSet,setisDoiQSet]);
     const {
       source,
       title,
@@ -117,6 +129,14 @@ export const SearchResult = forwardRef<HTMLDivElement | null, Props>(
                         </VuiButtonSecondary>
                     </VuiFlexItem>
                 )}*/}
+                {doi && !isDoiQSet && (
+                    <VuiFlexItem>
+                        <VuiButtonSecondary color="neutral" size="s" onClick={() => {onSearch({ doiQ: doi })}}>
+                            Filter results by this paper
+                        </VuiButtonSecondary>
+                    </VuiFlexItem>
+                )}
+
             </VuiFlexContainer>
           )
         }
