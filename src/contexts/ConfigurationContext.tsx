@@ -6,11 +6,6 @@ import {
   useState,
 } from "react";
 
-import axios from "axios";
-import { AnalyticsBrowser } from '@segment/analytics-next'
-
-export const segmentAnalytics = AnalyticsBrowser.load({ writeKey: 'dJI7GE43YVyFuVEnu3MBTXkFMNBEk1eM' })
-
 import {
   SummaryLanguage,
   SUMMARY_LANGUAGES,
@@ -18,6 +13,11 @@ import {
   normal_reranker_id,
   mmr_reranker_id,
 } from "../views/search/types";
+
+import axios from "axios";
+import { AnalyticsBrowser } from '@segment/analytics-next'
+
+export const segmentAnalytics = AnalyticsBrowser.load({ writeKey: 'dJI7GE43YVyFuVEnu3MBTXkFMNBEk1eM' })
 
 interface Config {
   // Search
@@ -263,8 +263,8 @@ export const ConfigContextProvider = ({ children, memid }: Props) => {
   const [search, setSearch] = useState<Search>({});
 
   const [app, setApp] = useState<App>({
-    isHeaderEnabled: false,
-    isFooterEnabled: false,
+    isHeaderEnabled: true,
+    isFooterEnabled: true,
     title: "",
   });
   const [appHeader, setAppHeader] = useState<AppHeader>({
@@ -310,8 +310,6 @@ export const ConfigContextProvider = ({ children, memid }: Props) => {
     const loadConfig = async () => {
       let config: Config;
       if (isProduction) {
-
-        console.log("before config")
         if (memid?.includes("mem_")) {
           console.log(memid)
           console.log("after config")
@@ -323,7 +321,6 @@ export const ConfigContextProvider = ({ children, memid }: Props) => {
           if(config_api_keyfromResult2 !== "zwt_I2BwpavvVixbzcZ5PFOmzmBS0Ip-fw7MQFvkZQ"){
             config = prefixConfig(result.data);
           }
-
 
           do {
             const result = await fetchConfig(memid);
@@ -558,6 +555,7 @@ export const ConfigContextProvider = ({ children, memid }: Props) => {
           return;
         }
       }else{
+        setIsConfigLoaded(true)
         return;
       }
 

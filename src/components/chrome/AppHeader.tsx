@@ -1,7 +1,7 @@
 import ReactGA from "react-ga4";
 import { useLocation } from "react-router-dom";
-import { useAuthenticationContext } from "../../../contexts/AuthenticationContext";
-import { useConfigContext } from "../../../contexts/ConfigurationContext";
+import { useAuthenticationContext } from "../../contexts/AuthenticationContext";
+import { useConfigContext } from "../../contexts/ConfigurationContext";
 import {
   VuiFlexContainer,
   VuiFlexItem,
@@ -10,7 +10,7 @@ import {
   VuiButtonTertiary,
   VuiText,
   VuiButtonPrimary, VuiModal,
-} from "../../../ui";
+} from "../../ui";
 
 import "./appHeader.scss";
 

@@ -8,8 +8,8 @@ import {
 import { SearchControls } from "./controls/SearchControls";
 import { ExampleQuestions } from "./controls/ExampleQuestions";
 import { useSearchContext } from "../../contexts/SearchContext";
-import { AppHeader } from "./chrome/AppHeader";
-import { AppFooter } from "./chrome/AppFooter";
+import { AppHeader } from "../../components/chrome/AppHeader";
+import { AppFooter } from "../../components/chrome/AppFooter";
 import { useConfigContext } from "../../contexts/ConfigurationContext";
 import { SearchUx } from "./SearchUx";
 import { SummaryUx } from "./SummaryUx";
@@ -67,7 +67,6 @@ export const SearchView = () => {
     <>
       {app.isHeaderEnabled && <AppHeader isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />}
       <VuiFlexContainer
-        className="searchView"
         direction="column"
         alignItems="center"
         spacing="none"

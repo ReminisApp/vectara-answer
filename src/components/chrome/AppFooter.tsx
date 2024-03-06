@@ -6,7 +6,7 @@ import {
   VuiLink,
   VuiSpacer,
   VuiButtonPrimary,
-} from "../../../ui";
+} from "../../ui";
 import "./appFooter.scss";
 
 export const AppFooter = () => {
