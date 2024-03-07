@@ -1,6 +1,7 @@
 import React from 'react'
 import { AppHeader } from '../../components/chrome/AppHeader';
 import { useConfigContext } from '../../contexts/ConfigurationContext';
+import { AppFooter } from '../../components/chrome/AppFooter';
 
 
 function Memory() {
@@ -8,9 +9,11 @@ function Memory() {
 
   return (
     <>
-      <h1 className="text-3xl font-bold underline">
-        Hello world!
-      </h1>
+      {app.isHeaderEnabled && <AppHeader isModalOpen={false} setIsModalOpen={() => true} />}
+      <div className='py-[50px] flex flex-col'>
+
+      </div>
+      {app.isFooterEnabled && <AppFooter />}
     </>
   )
 }

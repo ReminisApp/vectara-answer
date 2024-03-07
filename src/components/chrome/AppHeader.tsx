@@ -16,21 +16,21 @@ import "./appHeader.scss";
 
 
 interface Props {
-    isModalOpen: boolean,
-    setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>
+  isModalOpen: boolean,
+  setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>
 }
 export const AppHeader = ({ isModalOpen, setIsModalOpen }: Props) => {
   const { app, appHeader } = useConfigContext();
   const location = useLocation();
   const copyToClipboard = () => {
     navigator.clipboard.writeText(window.location.href)
-        .then(() => alert('Link copied!'))
-        .catch(err => console.error('Failed to copy: ', err));
+      .then(() => alert('Link copied!'))
+      .catch(err => console.error('Failed to copy: ', err));
   };
 
 
   const { isAuthEnabled, logOut, user } = useAuthenticationContext();
- const onClose = () => setIsModalOpen(false);
+  const onClose = () => setIsModalOpen(false);
   return (
     <div className="appHeader">
       <VuiFlexContainer justifyContent="spaceBetween" alignItems="center">
@@ -50,6 +50,7 @@ export const AppHeader = ({ isModalOpen, setIsModalOpen }: Props) => {
                   src={appHeader.logo.src ?? "images/vectara_logo.png"}
                   alt={appHeader.logo.alt ?? "Vectara logo"}
                   height={appHeader.logo.height ?? "20"}
+                  width={100}
                   style={{ marginTop: "1px" }}
                 />
               </a>
@@ -82,7 +83,7 @@ export const AppHeader = ({ isModalOpen, setIsModalOpen }: Props) => {
               </>
             )}
 
-            { (
+            {(
               <VuiFlexItem>
                 <VuiButtonTertiary
                   color="primary"
@@ -110,7 +111,7 @@ export const AppHeader = ({ isModalOpen, setIsModalOpen }: Props) => {
                 target="_blank"
                 onClick={(e) => {
                   e.preventDefault();
-                    setIsModalOpen(true);
+                  setIsModalOpen(true);
                   ReactGA.event({
                     category: "Outbound link",
                     action: "click",
@@ -132,7 +133,7 @@ export const AppHeader = ({ isModalOpen, setIsModalOpen }: Props) => {
                     </div>
                     <div className="flex space-x-2">
                       <VuiButtonPrimary onClick={copyToClipboard} color="primary"
-                                        size="m">Copy Link</VuiButtonPrimary>
+                        size="m">Copy Link</VuiButtonPrimary>
                       <VuiButtonPrimary onClick={onClose} color="neutral" size="m">Close</VuiButtonPrimary>
                     </div>
                   </div>
