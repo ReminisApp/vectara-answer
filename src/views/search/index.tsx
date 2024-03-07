@@ -1,5 +1,4 @@
-import React, { useEffect, useMemo } from "react";
-import { useLocation } from "react-router-dom";
+import React, { useEffect } from "react";
 import { initializeParse } from '@parse/react';
 import ReactGA from "react-ga4";
 import Analytics from "analytics";
@@ -7,30 +6,20 @@ import googleTagManager from "@analytics/google-tag-manager";
 import { SearchView } from "./SearchView";
 import { LoggedOutView } from "../loggedOut/LoggedOutView";
 import { useConfigContext } from "../../contexts/ConfigurationContext";
-import { SearchContextProvider } from "../../contexts/SearchContext";
 import {
     useAuthenticationContext,
 } from "../../contexts/AuthenticationContext";
 import * as FullStory from "@fullstory/browser";
 import "../../App.scss";
+import { SearchContextProvider } from "../../contexts/SearchContext";
 
 initializeParse(
     'https://parsecowrite.reminis.app/parse',
     'M7U3MemtabhLjEe4yYOCz15uEIoFWeD98uCklwSs',
     'fp5JxYm4d8tTQ9jjxZ4RXTmsWSKl2birahdPEgIy'
 );
-function useQuery() {
-    const { search } = useLocation();
 
-    return useMemo(() => new URLSearchParams(search), [search]);
-}
-
-interface IProps {
-    setMemid: React.Dispatch<React.SetStateAction<string>>;
-    memid: string;
-}
-
-const AppRoutes = ({ memid }: { memid: string }) => {
+const AppRoutes = ({memid}: {memid: string}) => {
 
 
     const { isConfigLoaded, missingConfigProps, app, analytics } =
@@ -86,20 +75,18 @@ const AppRoutes = ({ memid }: { memid: string }) => {
         <>
             <SearchContextProvider memid={memid}>
                 <SearchView />
-            </SearchContextProvider></>
+            </SearchContextProvider>
+        </>
 
     );
 };
 
-const Search = ({ setMemid, memid }: IProps) => {
-    const query = useQuery();
-    useEffect(() => {
-        const memid = query.get("memid")
-        setMemid(memid ?? "");
-    }, [query, setMemid]);
+const Search = () => {
+    const { memid } =
+        useConfigContext();
 
     return (
-        <AppRoutes memid={memid} />
+        <AppRoutes memid={memid}/>
     );
 }
 

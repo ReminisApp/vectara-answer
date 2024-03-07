@@ -4,9 +4,8 @@ import { AppHeader } from '../../components/chrome/AppHeader';
 import { useConfigContext } from '../../contexts/ConfigurationContext';
 
 
-function Memory({ memid }: { memid: string }) {
+function Memory() {
   const { app } = useConfigContext();
-  console.log(app)
 
   return (
     <VuiFlexContainer

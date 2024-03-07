@@ -10,7 +10,7 @@ grecaptcha.ready(() => {
 
   root.render(
     <React.StrictMode>
-      <ConfigContextProvider memid={''}>
+      <ConfigContextProvider>
         <AuthenticationContextProvider>
           <App />
         </AuthenticationContextProvider>
