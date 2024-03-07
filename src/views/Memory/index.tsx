@@ -1,5 +1,4 @@
 import React from 'react'
-import { VuiFlexContainer } from '../../ui'
 import { AppHeader } from '../../components/chrome/AppHeader';
 import { useConfigContext } from '../../contexts/ConfigurationContext';
 
@@ -8,14 +7,11 @@ function Memory() {
   const { app } = useConfigContext();
 
   return (
-    <VuiFlexContainer
-      direction="column"
-      alignItems="center"
-      spacing="none"
-    >
-      {app.isHeaderEnabled && <AppHeader isModalOpen={false} setIsModalOpen={() => true} />}
-
-    </VuiFlexContainer>
+    <>
+      <h1 className="text-3xl font-bold underline">
+        Hello world!
+      </h1>
+    </>
   )
 }
 

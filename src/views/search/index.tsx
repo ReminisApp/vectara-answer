@@ -10,7 +10,6 @@ import {
     useAuthenticationContext,
 } from "../../contexts/AuthenticationContext";
 import * as FullStory from "@fullstory/browser";
-import "../../App.scss";
 import { SearchContextProvider } from "../../contexts/SearchContext";
 
 initializeParse(
