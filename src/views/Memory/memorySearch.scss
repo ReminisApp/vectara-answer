@@ -1,0 +1,30 @@
+@import "../../ui/styleUtils/index.scss";
+@import "../../variables.scss";
+
+.memorySearchControl {
+  max-width: $pageWidth;
+  width: 100%;
+}
+
+.memorySearch {
+    width: 800px;
+}
+
+.memoryHeader {
+    display: flex;
+    gap: 4;
+    align-items: center;
+    justify-content: space-between;
+    padding: $sizeS 0;
+}
+
+.searchControls {
+  padding: $sizeL $sizeXxl * 2 0;
+  padding-bottom: $sizeL;
+}
+
+@media screen and (max-width: $breakpointContentIsCramped) {
+  .searchControls {
+    padding: $sizeL $sizeXxl 0;
+  }
+}

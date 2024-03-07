@@ -2,12 +2,20 @@ import React from "react";
 import { BrowserRouter as Router } from 'react-router-dom'
 import AppWrapper from "./AppWrapper";
 import "./App.scss";
-import "./index.css";
+import { ConfigContextProvider } from "./contexts/ConfigurationContext";
+import { AuthenticationContextProvider } from "./contexts/AuthenticationContext";
+import { SearchContextProvider } from "./contexts/SearchContext";
 
 const App = () => {
   return (
     <Router>
-      <AppWrapper />
+      <ConfigContextProvider>
+        <AuthenticationContextProvider>
+          <SearchContextProvider>
+            <AppWrapper />
+          </SearchContextProvider>
+        </AuthenticationContextProvider>
+      </ConfigContextProvider>
     </Router>
   )
 }

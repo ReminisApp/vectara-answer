@@ -81,13 +81,12 @@ const getQueryParam = (urlParams: URLSearchParams, key: string) => {
 
 type Props = {
   children: ReactNode;
-  memid: string | null;
 };
 
 let searchCount = 0;
 
-export const SearchContextProvider = ({ children, memid }: Props) => {
-  const { isConfigLoaded, search, summary, rerank, hybrid, uxMode } =
+export const SearchContextProvider = ({ children }: Props) => {
+  const { isConfigLoaded, search, summary, rerank, hybrid, uxMode, memid } =
     useConfigContext();
   const isSummaryEnabled = uxMode === "summary";
 

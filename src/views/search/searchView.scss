@@ -24,6 +24,10 @@ $appHeaderHeight: 52px;
   min-height: calc(100vh - 280px);
 }
 
+.pt-50 {
+  padding-top: 50px;
+}
+
 @media screen and (max-width: $breakpointContentIsCramped) {
   .searchContent {
     padding: $sizeL $sizeXxl;

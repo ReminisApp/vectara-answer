@@ -70,6 +70,7 @@ export const SearchView = () => {
         direction="column"
         alignItems="center"
         spacing="none"
+        className="searchView"
       >
         {isConfigLoaded && (
           <VuiFlexItem className="searchControlsContainer">

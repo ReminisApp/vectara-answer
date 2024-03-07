@@ -72,7 +72,7 @@ const AppRoutes = ({memid}: {memid: string}) => {
 
     return (
         <>
-            <SearchContextProvider memid={memid}>
+            <SearchContextProvider>
                 <SearchView />
             </SearchContextProvider>
         </>

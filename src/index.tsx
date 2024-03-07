@@ -1,8 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
-import { ConfigContextProvider } from "./contexts/ConfigurationContext";
-import { AuthenticationContextProvider } from "./contexts/AuthenticationContext";
 
 // @ts-expect-error - grecaptcha is a global variable.
 grecaptcha.ready(() => {
@@ -10,11 +8,7 @@ grecaptcha.ready(() => {
 
   root.render(
     <React.StrictMode>
-      <ConfigContextProvider>
-        <AuthenticationContextProvider>
-          <App />
-        </AuthenticationContextProvider>
-      </ConfigContextProvider>
+      <App />
     </React.StrictMode>
   );
 });

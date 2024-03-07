@@ -306,57 +306,63 @@ export const ConfigContextProvider = ({ children }: Props) => {
     summaryEnableHem: false,
   });
 
+  const isProduction = process.env.NODE_ENV === "production"
+
   useEffect(() => {
 
 
     const loadConfig = async () => {
       let config: Config;
-      if (memid?.includes("mem_")) {
-        console.log(memid)
-        console.log("after config")
-        const config_api_keyfromResult = "zwt_I2BwpavvVixbzcZ5PFOmzmBS0Ip-fw7MQFvkZQ"
-        const result2 = await fetchConfig(memid);
-        config = prefixConfig(result2.data);
-        const result = await fetchConfig(memid);
-        const config_api_keyfromResult2 = result.data.config_api_key;
-        if (config_api_keyfromResult2 !== "zwt_I2BwpavvVixbzcZ5PFOmzmBS0Ip-fw7MQFvkZQ") {
-          config = prefixConfig(result.data);
-        }
+      if (isProduction) {
 
-        do {
+        console.log("before config")
+        if (memid?.includes("mem_")) {
+          console.log(memid)
+          console.log("after config")
+          const config_api_keyfromResult = "zwt_I2BwpavvVixbzcZ5PFOmzmBS0Ip-fw7MQFvkZQ"
+          const result2 = await fetchConfig(memid);
+          config = prefixConfig(result2.data);
           const result = await fetchConfig(memid);
-          const config_api_keyfromResult1 = result.data.config_api_key;
-          if (config_api_keyfromResult1 !== "zwt_I2BwpavvVixbzcZ5PFOmzmBS0Ip-fw7MQFvkZQ") {
-            setIsConfigLoaded(true);
+          const config_api_keyfromResult2 = result.data.config_api_key;
+          if(config_api_keyfromResult2 !== "zwt_I2BwpavvVixbzcZ5PFOmzmBS0Ip-fw7MQFvkZQ"){
             config = prefixConfig(result.data);
-            console.log("config start")
-            console.log(config)
-            console.log("config end")
-            if (config.config_questions) {
-              setExampleQuestions(JSON.parse(config.config_questions));
-            } else {
-              const queriesResponse = await fetchQueries();
-              if (queriesResponse) {
-                const questions = queriesResponse.questions;
-                if (questions) {
-                  setExampleQuestions(questions);
-                }
-              }
-            }
-            break;
           }
 
-        }
-        while (config_api_keyfromResult === "zwt_I2BwpavvVixbzcZ5PFOmzmBS0Ip-fw7MQFvkZQ")
+
+          do {
+            const result = await fetchConfig(memid);
+            const config_api_keyfromResult1 = result.data.config_api_key;
+            if(config_api_keyfromResult1 !== "zwt_I2BwpavvVixbzcZ5PFOmzmBS0Ip-fw7MQFvkZQ"){
+              setIsConfigLoaded(true);
+              config = prefixConfig(result.data);
+              console.log("config start")
+              console.log(config)
+              console.log("config end")
+              if (config.config_questions) {
+                setExampleQuestions(JSON.parse(config.config_questions));
+              } else {
+                const queriesResponse = await fetchQueries();
+                if (queriesResponse) {
+                  const questions = queriesResponse.questions;
+                  if (questions) {
+                    setExampleQuestions(questions);
+                  }
+                }
+              }
+              break;
+            }
+
+          }
+          while(config_api_keyfromResult === "zwt_I2BwpavvVixbzcZ5PFOmzmBS0Ip-fw7MQFvkZQ" )
 
 
         const missingConfigProps = requiredConfigVars.reduce(
-          (accum, configVarName) => {
-            if (config[`config_${configVarName}` as ConfigProp] === undefined)
-              accum.push(configVarName);
-            return accum;
-          },
-          [] as string[]
+            (accum, configVarName) => {
+              if (config[`config_${configVarName}` as ConfigProp] === undefined)
+                accum.push(configVarName);
+              return accum;
+            },
+            [] as string[]
         );
         setMissingConfigProps(missingConfigProps);
 
@@ -457,24 +463,24 @@ export const ConfigContextProvider = ({ children }: Props) => {
 
         const isFilteringEnabled = isTrue(config_enable_source_filters);
         const allSources =
-          config_all_sources === undefined ? true : isTrue(config_all_sources);
+            config_all_sources === undefined ? true : isTrue(config_all_sources);
 
         const sources =
-          config_sources?.split(",").map((source) => ({
-            value: source.toLowerCase(),
-            label: source,
-          })) ?? [];
+            config_sources?.split(",").map((source) => ({
+              value: source.toLowerCase(),
+              label: source,
+            })) ?? [];
 
         const sourceValueToLabelMap = sources.length
-          ? sources.reduce((accum, { label, value }) => {
-            accum[value] = label;
-            return accum;
-          }, {} as Record<string, string>)
-          : undefined;
+            ? sources.reduce((accum, { label, value }) => {
+              accum[value] = label;
+              return accum;
+            }, {} as Record<string, string>)
+            : undefined;
 
         if (isFilteringEnabled && sources.length === 0) {
           console.error(
-            'enable_source_filters is set to "True" but sources is empty. Define some sources for filtering or set enable_source_filters to "False"'
+              'enable_source_filters is set to "True" but sources is empty. Define some sources for filtering or set enable_source_filters to "False"'
           );
         }
 
@@ -487,13 +493,13 @@ export const ConfigContextProvider = ({ children }: Props) => {
 
         setSummary({
           defaultLanguage: validateLanguage(
-            config_summary_default_language as SummaryLanguage,
-            "auto"
+              config_summary_default_language as SummaryLanguage,
+              "auto"
           ),
           summaryNumResults: config_summary_num_results ?? 7,
           summaryNumSentences: config_summary_num_sentences ?? 3,
           summaryPromptName:
-            config_summary_prompt_name ?? "vectara-summary-ext-v1.2.0",
+              config_summary_prompt_name ?? "vectara-summary-ext-v1.2.0",
           hfToken: config_hf_token ?? "",
           summaryEnableHem: isTrue(config_summary_enable_hem) ?? false,
         });
@@ -524,8 +530,8 @@ export const ConfigContextProvider = ({ children }: Props) => {
         setRerank({
           isEnabled: isTrue(config_mmr) || isTrue(config_rerank),
           numResults: isTrue(config_mmr)
-            ? (config_mmr_num_results ?? 50)
-            : config_rerank_num_results ?? rerank.numResults,
+              ? (config_mmr_num_results ?? 50)
+              : config_rerank_num_results ?? rerank.numResults,
           id: isTrue(config_mmr) ? mmr_reranker_id : normal_reranker_id,
           diversityBias: config_mmr_diversity_bias ?? rerank.diversityBias ?? 0.3,
         });
@@ -535,23 +541,31 @@ export const ConfigContextProvider = ({ children }: Props) => {
           lambdaLong: config_hybrid_search_lambda_long ?? hybrid.lambdaLong,
           lambdaShort: config_hybrid_search_lambda_short ?? hybrid.lambdaShort,
         });
-      } else {
-        if (window.location.href.includes("mem_")) {
-          console.log("mem exists")
+        } else {
+          if(window.location.href.includes("mem_")){
+            console.log("mem exists")
 
-          segmentAnalytics.identify(memid, { "visited": "sci-hub.bot" })
-          segmentAnalytics.page("sci-hub.bot")
-          segmentAnalytics.track('sci-hub.bot')
-        }
-        else {
-          if (window.location.href.includes("utm_campaign")) {
+            segmentAnalytics.identify(memid,{"visited":"sci-hub.bot"})
             segmentAnalytics.page("sci-hub.bot")
-            segmentAnalytics.identify(memid, { "visited": "sci-hub.bot" })
-            segmentAnalytics.track('KeymateGPTRedirect')
+            segmentAnalytics.track('sci-hub.bot')
           }
+          else {
+            if(window.location.href.includes("utm_campaign")){
+              segmentAnalytics.page("sci-hub.bot")
+              segmentAnalytics.identify(memid,{"visited":"sci-hub.bot"})
+              segmentAnalytics.track('KeymateGPTRedirect')
+            }
+
+
+            window.location.href = 'https://chat.openai.com/g/g-veSrMmasJ-keymate-ai-search-gpt';
+          }
+          return;
         }
+      }else{
+        setIsConfigLoaded(true)
         return;
       }
+
     };
     loadConfig();
 
