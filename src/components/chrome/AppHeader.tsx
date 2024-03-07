@@ -63,6 +63,7 @@ export const AppHeader = ({ isModalOpen, setIsModalOpen }: Props) => {
                 onClick={() => {
                   navigate("/")
                 }}
+                className="navItem"
               >
                 {"Search"}
               </VuiButtonTertiary>
@@ -74,6 +75,7 @@ export const AppHeader = ({ isModalOpen, setIsModalOpen }: Props) => {
                 onClick={() => {
                   navigate("/memory")
                 }}
+                className="navItem"
               >
                 {"Memory"}
               </VuiButtonTertiary>

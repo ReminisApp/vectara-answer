@@ -9,19 +9,45 @@ $appHeaderHeight: 52px;
 }
 
 .memory {
-  min-height: calc(100vh - 280px);
   padding: $sizeM $sizeXxl;
   width: 100%;
   background-color: $colorLightShade;
 }
 
+.memoryHeader {
+  display: flex;
+  gap: 4;
+  align-items: center;
+  justify-content: space-between;
+  padding: $sizeS 0;
+}
+
+
 .memoryContent {
-  background-color: rgb(245, 239, 228);
+  background-color: white;
   width: 100%;
-  height: 100%;
-  border-radius: 5%;
+  height: 650px;
+  border-radius: 5px;
+  padding: $sizeM;
+  box-shadow: rgba(50, 50, 50, 0.25) 0px 2px 5px -1px,
+  rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
 
 .pathText {
+  font-weight: bold;
+}
+
+.contentHeader {
+  border-bottom: 1px solid #d5d6da;
+  padding: 5px 0;
+}
+
+.contentHeader .vuiText {
   font-weight: bolder;
+  color: #838a99 !important; 
+}
+
+.contentHeader input[type="checkbox"] {
+  transform : scale(1.2);
+  cursor: pointer;
 }

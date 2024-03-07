@@ -3,9 +3,11 @@ import { AppHeader } from '../../components/chrome/AppHeader';
 import { useConfigContext } from '../../contexts/ConfigurationContext';
 import { AppFooter } from '../../components/chrome/AppFooter';
 import './memory.scss'
-import { VuiButtonPrimary, VuiFlexContainer, VuiFlexItem, VuiText } from '../../ui';
+import { VuiFlexContainer } from '../../ui';
 import MemorySearch from './MemorySearch';
-import { FaPlus } from "react-icons/fa6";
+import MemoryHeader from './MemoryHeader';
+import MemoyContentHeader from './MemoyContentHeader';
+
 
 
 function Memory() {
@@ -27,26 +29,13 @@ function Memory() {
           spacing="none"
           className='memory'
         >
-          <div
-            className='memoryHeader'
-          >
-            <VuiFlexItem>
-              <VuiText size='l' className='pathText'>
-                My Memory
-              </VuiText>
-            </VuiFlexItem>
-            <VuiFlexItem>
-              <VuiButtonPrimary color='primary' size='l'>
-                <FaPlus />&nbsp;New
-              </VuiButtonPrimary>
-            </VuiFlexItem>
-          </div>
+          <MemoryHeader/>
           <VuiFlexContainer
             direction="column"
             spacing="none"
             className='memoryContent'
           >
-            test
+            <MemoyContentHeader/>
           </VuiFlexContainer>
         </VuiFlexContainer>
       </VuiFlexContainer>
