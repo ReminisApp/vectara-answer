@@ -5,14 +5,13 @@ import { useConfigContext } from "../../contexts/ConfigurationContext";
 import {
   VuiFlexContainer,
   VuiFlexItem,
-  VuiTitle,
-  VuiTextColor,
   VuiButtonTertiary,
   VuiText,
   VuiButtonPrimary, VuiModal,
 } from "../../ui";
 
 import "./appHeader.scss";
+import { useNavigate } from "react-router-dom";
 
 
 interface Props {
@@ -20,8 +19,9 @@ interface Props {
   setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>
 }
 export const AppHeader = ({ isModalOpen, setIsModalOpen }: Props) => {
-  const { app, appHeader } = useConfigContext();
+  const { appHeader } = useConfigContext();
   const location = useLocation();
+  const navigate = useNavigate();
   const copyToClipboard = () => {
     navigator.clipboard.writeText(window.location.href)
       .then(() => alert('Link copied!'))
@@ -35,7 +35,7 @@ export const AppHeader = ({ isModalOpen, setIsModalOpen }: Props) => {
     <div className="appHeader">
       <VuiFlexContainer justifyContent="spaceBetween" alignItems="center">
         <VuiFlexItem grow={1}>
-          <VuiFlexContainer alignItems="center" wrap={true} spacing="xxs">
+          <VuiFlexContainer alignItems="center" wrap={true} spacing="xs">
             <VuiFlexItem>
               {/* We want this disabled so we can track outbound links. Enabling
           this would add the rel="noopener noreferrer" attribute to the
@@ -56,13 +56,39 @@ export const AppHeader = ({ isModalOpen, setIsModalOpen }: Props) => {
               </a>
             </VuiFlexItem>
 
-            <VuiFlexItem grow={1}>
-              <VuiTitle size="xs" align="left">
-                <VuiTextColor color="subdued">
-                  <h1>{app.title ?? "Sample app"}</h1>
-                </VuiTextColor>
-              </VuiTitle>
+            <VuiFlexItem>
+              <VuiButtonTertiary
+                color="primary"
+                size="m"
+                onClick={() => {
+                  navigate("/")
+                }}
+              >
+                {"Search"}
+              </VuiButtonTertiary>
             </VuiFlexItem>
+            <VuiFlexItem >
+              <VuiButtonTertiary
+                color="primary"
+                size="m"
+                onClick={() => {
+                  navigate("/memory")
+                }}
+              >
+                {"Memory"}
+              </VuiButtonTertiary>
+            </VuiFlexItem>
+            {/*  <VuiFlexItem >
+              <VuiButtonTertiary
+                color="primary"
+                size="m"
+                onClick={() => {
+                  console.log("first")
+                }}
+              >
+                {"Bookmark"}
+              </VuiButtonTertiary>
+            </VuiFlexItem> */}
           </VuiFlexContainer>
         </VuiFlexItem>
 

@@ -552,8 +552,6 @@ export const ConfigContextProvider = ({ children }: Props) => {
         }
         return;
       }
-
-
     };
     loadConfig();
 

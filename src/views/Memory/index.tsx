@@ -10,7 +10,7 @@ function Memory() {
   return (
     <>
       {app.isHeaderEnabled && <AppHeader isModalOpen={false} setIsModalOpen={() => true} />}
-      <div className='py-[50px] flex flex-col'>
+      <div className='pt-[50px] flex flex-col h-full'>
 
       </div>
       {app.isFooterEnabled && <AppFooter />}
