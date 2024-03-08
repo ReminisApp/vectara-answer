@@ -1,0 +1,94 @@
+@import "../../ui/styleUtils/index.scss";
+@import "../../variables.scss";
+
+.memoryContent {
+  background-color: white;
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  padding: $sizeM;
+  box-shadow: rgba(50, 50, 50, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.contentHeader {
+  border-bottom: 1px solid #d5d6da;
+  padding: 5px 0;
+}
+
+.contentHeader .vuiText {
+  font-weight: bolder;
+  color: #838a99 !important;
+}
+
+.contentHeader input[type="checkbox"] {
+  transform: scale(1.2);
+  cursor: pointer;
+}
+
+.memoryItem {
+  padding: 10px 0;
+}
+
+.memoryItem .vuiText {
+  font-weight: bolder;
+  color: #838a99 !important;
+}
+
+.memoryItem input[type="checkbox"] {
+  transform: scale(1.2);
+  cursor: pointer;
+}
+
+.copyIcon {
+  color: $colorPrimary;
+  cursor: pointer;
+}
+.copyIcon:hover {
+  transform: scale(1.2);
+}
+
+.deleteIcon {
+  color: $colorDanger;
+  cursor: pointer;
+}
+
+.deleteIcon:hover {
+  transform: scale(1.2);
+}
+
+.pdfName {
+  flex-direction: row !important;
+  align-items: center !important;
+  gap: 10px;
+  flex: 3.4 !important;
+}
+
+.header1 {
+  padding-left: 10px;
+  flex: 4;
+  max-width: 950px;
+  text-overflow: ellipsis;
+}
+
+.header2 {
+  padding-left: 10px;
+  flex-direction: row !important;
+  justify-content: center;
+  flex: 1;
+}
+
+.header3 {
+  padding-left: 10px;
+  flex-direction: row !important;
+  justify-content: center;
+  flex: 1.5;
+}
+
+.header4 {
+  flex-direction: row !important;
+  justify-content: center;
+  flex: 0.5;
+}
