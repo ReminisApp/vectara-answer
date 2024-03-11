@@ -100,7 +100,7 @@ export const AppHeader = ({ isModalOpen, setIsModalOpen }: Props) => {
                   }}
                   className="loginButton"
                 >
-                  {"Login"}&nbsp;<IoLogIn size={"24px"} />
+                  {"Sign In"}&nbsp;<IoLogIn size={"24px"} />
                 </VuiButtonTertiary>
               </VuiFlexItem>
             </VuiFlexContainer>
