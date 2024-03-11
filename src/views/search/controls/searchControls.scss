@@ -5,6 +5,11 @@
   padding: $sizeL $sizeXxl * 2 0;
 }
 
+.searchInput {
+  width: 100%;
+  border-radius: 50px !important;
+}
+
 @media screen and (max-width: $breakpointContentIsCramped) {
   .searchControls {
     padding: $sizeL $sizeXxl 0;
@@ -13,4 +18,48 @@
 
 .filtersBar {
   height: 34px;
+}
+
+.searchButton {
+  background-color: white;
+}
+
+.searchShareButton {
+  display: flex;
+  height: fit-content !important;
+  gap: 3px;
+  padding: 12px 25px !important;
+  border-radius: 35px !important;
+  background-color: $colorPrimary !important;
+  color: white !important;
+  align-items: center;
+  justify-content: center;
+}
+
+.searchShareButton p {
+  font-size: 14px;
+}
+
+.searchShareButton:hover {
+  transition: all 0.2s ease-in-out;
+  transform: scale(1.1);
+  box-shadow: none !important;
+}
+
+.owner {
+  font-size: 20px !important;
+  font-weight: bold !important;
+}
+
+.resultText {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.results {
+  display: flex;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  cursor: pointer;
 }

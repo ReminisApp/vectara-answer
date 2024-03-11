@@ -1,4 +1,4 @@
-import { VuiSpacer, VuiTitle, VuiHorizontalRule, VuiSummary } from "../../ui";
+import { VuiSpacer, VuiTitle, VuiHorizontalRule, VuiSummary, VuiSpinner, VuiFlexContainer } from "../../ui";
 import {
   sanitizeCitations,
   reorderCitations,
@@ -6,10 +6,10 @@ import {
 } from "../../ui/utils/citations";
 import { useSearchContext } from "../../contexts/SearchContext";
 import { SearchResultList } from "./results/SearchResultList";
-import { ProgressReport } from "./progressReport/ProgressReport";
 import { SummaryCitation } from "./summary/SummaryCitation";
 import { DeserializedSearchResult } from "./types";
 import { ConfidenceScore } from "./summary/ConfidenceScore";
+import './summary.scss'
 
 export const SummaryUx = () => {
   const {
@@ -47,7 +47,12 @@ export const SummaryUx = () => {
 
   return (
     <>
-      <ProgressReport isSearching={isSearching} isSummarizing={isSummarizing} />
+
+      {isSearching &&
+        <VuiFlexContainer className="searchProgress" justifyContent="center" alignItems="center" spacing="none">
+          <VuiSpinner size="xl" />
+        </VuiFlexContainer>
+      }
 
       {summary && (
         <>

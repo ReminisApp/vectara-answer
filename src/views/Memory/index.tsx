@@ -3,9 +3,9 @@ import { AppHeader } from '../../components/chrome/AppHeader';
 import { useConfigContext } from '../../contexts/ConfigurationContext';
 import './memory.scss'
 import { VuiFlexContainer, VuiFlexItem, VuiText } from '../../ui';
-import MemorySearch from './MemorySearch';
 import MemoryHeader from './MemoryHeader';
 import MemoryContent from './MemoryContent';
+import { AppFooter } from '../../components/chrome/AppFooter';
 
 
 
@@ -21,8 +21,6 @@ function Memory() {
         spacing="none"
         className='memoryView'
       >
-
-        <MemorySearch />
         <VuiFlexContainer
           direction="column"
           spacing="none"
@@ -49,6 +47,7 @@ function Memory() {
           <MemoryContent />
         </VuiFlexContainer>
       </VuiFlexContainer>
+      {app.isFooterEnabled && <AppFooter />}
     </>
   )
 }

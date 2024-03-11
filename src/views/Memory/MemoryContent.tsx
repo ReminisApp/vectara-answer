@@ -12,6 +12,15 @@ function MemoryContent() {
             <MemoryItem />
             <MemoryItem />
             <MemoryItem />
+            <MemoryItem />
+            <MemoryItem />
+            <MemoryItem />
+            <MemoryItem />
+            <MemoryItem />
+            <MemoryItem />
+            <MemoryItem />
+            <MemoryItem />
+            <MemoryItem />
         </div>
     )
 }

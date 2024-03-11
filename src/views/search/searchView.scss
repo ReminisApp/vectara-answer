@@ -10,6 +10,7 @@ $appHeaderHeight: 52px;
 .searchView {
   // Give some breathing room between the header and the content.
   padding-top: $appHeaderHeight + 40px;
+  background-color: $colorPrimaryBackground;
 }
 
 .searchControlsContainer {

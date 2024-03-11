@@ -5,10 +5,10 @@ import './memorySearch.scss'
 function MemorySearch() {
     return (
         <>
-            <div className="searchControls">
+            <div className="memorySearchControls">
                 <VuiSearchInput
                     size="l"
-                    placeholder="Ask from your memory"
+                    placeholder="Ask From Your Memory"
                     autoFocus
                     className='memorySearch'
                 />

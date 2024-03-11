@@ -6,17 +6,35 @@
 
 .vuiSearchInput__input {
   flex-grow: 1;
-  background-color: $colorEmptyShade;
-  border: 1px solid $colorMediumShade;
-  border-radius: $sizeXs;
+  border: 1px solid $colorPrimary;
   box-shadow: $shadowSmallStart;
   transition: all $transitionSpeed;
-  outline-width: 1px !important;
+  padding: 0 !important;
+  border: 0 !important;
+  background-color: transparent !important;
+  width: 100%;
+
+  &:focus-visible {
+    outline: 0 !important;
+  }
+}
+
+.vuiSearchInput__input__wrapper {
+  flex-grow: 1;
+  background-color: $colorEmptyShade;
+  border: 1px solid $colorPrimary;
+  border-radius: $sizeL;
+  box-shadow: $shadowSmallStart;
+  transition: all $transitionSpeed;
+  outline-width: 2px !important;
   outline-style: solid;
   outline-color: transparent;
   outline-offset: -1px !important;
+  padding: $sizeXs $sizeM;
+  display: flex !important;
+  align-items: center;
 
-  &:focus-visible {
+  &:focus-within {
     outline-color: $colorPrimary !important;
     box-shadow: $shadowSmallEnd;
   }
@@ -45,5 +63,25 @@
   .vuiSearchInput__input {
     padding: $sizeS $sizeM;
     font-size: $fontSizeLarge;
+  }
+}
+
+.removeButton {
+  cursor: pointer;
+  color: rgb(190, 29, 29);
+
+  &:hover {
+    transform: scale(1.1);
+    transition: all 0.1s ease;
+  }
+}
+
+.searchIcon {
+  cursor: pointer;
+  color: $colorPrimary;
+
+  &:hover {
+    transform: scale(1.1);
+    transition: all 0.1s ease;
   }
 }

@@ -324,7 +324,7 @@ export const ConfigContextProvider = ({ children }: Props) => {
           config = prefixConfig(result2.data);
           const result = await fetchConfig(memid);
           const config_api_keyfromResult2 = result.data.config_api_key;
-          if(config_api_keyfromResult2 !== "zwt_I2BwpavvVixbzcZ5PFOmzmBS0Ip-fw7MQFvkZQ"){
+          if (config_api_keyfromResult2 !== "zwt_I2BwpavvVixbzcZ5PFOmzmBS0Ip-fw7MQFvkZQ") {
             config = prefixConfig(result.data);
           }
 
@@ -332,7 +332,7 @@ export const ConfigContextProvider = ({ children }: Props) => {
           do {
             const result = await fetchConfig(memid);
             const config_api_keyfromResult1 = result.data.config_api_key;
-            if(config_api_keyfromResult1 !== "zwt_I2BwpavvVixbzcZ5PFOmzmBS0Ip-fw7MQFvkZQ"){
+            if (config_api_keyfromResult1 !== "zwt_I2BwpavvVixbzcZ5PFOmzmBS0Ip-fw7MQFvkZQ") {
               setIsConfigLoaded(true);
               config = prefixConfig(result.data);
               console.log("config start")
@@ -353,206 +353,206 @@ export const ConfigContextProvider = ({ children }: Props) => {
             }
 
           }
-          while(config_api_keyfromResult === "zwt_I2BwpavvVixbzcZ5PFOmzmBS0Ip-fw7MQFvkZQ" )
+          while (config_api_keyfromResult === "zwt_I2BwpavvVixbzcZ5PFOmzmBS0Ip-fw7MQFvkZQ")
 
 
-        const missingConfigProps = requiredConfigVars.reduce(
+          const missingConfigProps = requiredConfigVars.reduce(
             (accum, configVarName) => {
               if (config[`config_${configVarName}` as ConfigProp] === undefined)
                 accum.push(configVarName);
               return accum;
             },
             [] as string[]
-        );
-        setMissingConfigProps(missingConfigProps);
+          );
+          setMissingConfigProps(missingConfigProps);
 
-        const {
-          // Search
-          config_endpoint,
-          config_corpus_id,
-          config_customer_id,
-          config_api_key,
-          config_hf_token,
+          const {
+            // Search
+            config_endpoint,
+            config_corpus_id,
+            config_customer_id,
+            config_api_key,
+            config_hf_token,
 
-          // App
-          config_ux,
-          config_app_title,
-          config_enable_app_header,
-          config_enable_app_footer,
+            // App
+            config_ux,
+            config_app_title,
+            config_enable_app_header,
+            config_enable_app_footer,
 
-          // Filters
-          config_enable_source_filters,
-          config_all_sources,
-          config_sources,
+            // Filters
+            config_enable_source_filters,
+            config_all_sources,
+            config_sources,
 
-          // App header
-          config_app_header_logo_link,
-          config_app_header_logo_src,
-          config_app_header_logo_alt,
-          config_app_header_logo_height,
-          config_app_header_learn_more_link,
-          config_app_header_learn_more_text,
+            // App header
+            config_app_header_logo_link,
+            config_app_header_logo_src,
+            config_app_header_logo_alt,
+            config_app_header_logo_height,
+            config_app_header_learn_more_link,
+            config_app_header_learn_more_text,
 
-          // Search header
-          config_search_logo_link,
-          config_search_logo_src,
-          config_search_logo_alt,
-          config_search_logo_height,
-          config_search_title,
-          config_search_description,
-          config_search_placeholder,
+            // Search header
+            config_search_logo_link,
+            config_search_logo_src,
+            config_search_logo_alt,
+            config_search_logo_height,
+            config_search_title,
+            config_search_description,
+            config_search_placeholder,
 
-          // Auth
-          config_authenticate,
-          config_google_client_id,
+            // Auth
+            config_authenticate,
+            config_google_client_id,
 
-          // Analytics
-          config_google_analytics_tracking_code,
-          config_full_story_org_id,
-          config_gtm_container_id,
+            // Analytics
+            config_google_analytics_tracking_code,
+            config_full_story_org_id,
+            config_gtm_container_id,
 
-          // rerank
-          config_rerank,
-          config_rerank_num_results,
+            // rerank
+            config_rerank,
+            config_rerank_num_results,
 
-          // MMR
-          config_mmr,
-          config_mmr_diversity_bias,
-          config_mmr_num_results,
+            // MMR
+            config_mmr,
+            config_mmr_diversity_bias,
+            config_mmr_num_results,
 
-          // hybrid search
-          config_hybrid_search_num_words,
-          config_hybrid_search_lambda_long,
-          config_hybrid_search_lambda_short,
+            // hybrid search
+            config_hybrid_search_num_words,
+            config_hybrid_search_lambda_long,
+            config_hybrid_search_lambda_short,
 
-          // Summary
-          config_summary_default_language,
-          config_summary_num_results,
-          config_summary_num_sentences,
-          config_summary_prompt_name,
-          config_summary_enable_hem,
-        } = config;
+            // Summary
+            config_summary_default_language,
+            config_summary_num_results,
+            config_summary_num_sentences,
+            config_summary_prompt_name,
+            config_summary_enable_hem,
+          } = config;
 
-        setUxMode(config_ux ?? "summary");
+          setUxMode(config_ux ?? "summary");
 
-        setSearch({
-          endpoint: config_endpoint,
-          corpusId: config_corpus_id,
-          customerId: config_customer_id,
-          apiKey: config_api_key,
-        });
+          setSearch({
+            endpoint: config_endpoint,
+            corpusId: config_corpus_id,
+            customerId: config_customer_id,
+            apiKey: config_api_key,
+          });
 
-        setApp({
-          title: config_app_title ?? "",
-          isHeaderEnabled: isTrue(config_enable_app_header ?? "True"),
-          isFooterEnabled: isTrue(config_enable_app_footer ?? "True"),
-        });
+          setApp({
+            title: config_app_title ?? "",
+            isHeaderEnabled: isTrue(config_enable_app_header ?? "True"),
+            isFooterEnabled: isTrue(config_enable_app_footer ?? "True"),
+          });
 
-        setAppHeader({
-          logo: {
-            link: config_app_header_logo_link,
-            src: config_app_header_logo_src,
-            alt: config_app_header_logo_alt,
-            height: config_app_header_logo_height,
-          },
-          learnMore: {
-            link: config_app_header_learn_more_link,
-            text: config_app_header_learn_more_text,
-          },
-        });
+          setAppHeader({
+            logo: {
+              link: config_app_header_logo_link,
+              src: config_app_header_logo_src,
+              alt: config_app_header_logo_alt,
+              height: config_app_header_logo_height,
+            },
+            learnMore: {
+              link: config_app_header_learn_more_link,
+              text: config_app_header_learn_more_text,
+            },
+          });
 
-        const isFilteringEnabled = isTrue(config_enable_source_filters);
-        const allSources =
+          const isFilteringEnabled = isTrue(config_enable_source_filters);
+          const allSources =
             config_all_sources === undefined ? true : isTrue(config_all_sources);
 
-        const sources =
+          const sources =
             config_sources?.split(",").map((source) => ({
               value: source.toLowerCase(),
               label: source,
             })) ?? [];
 
-        const sourceValueToLabelMap = sources.length
+          const sourceValueToLabelMap = sources.length
             ? sources.reduce((accum, { label, value }) => {
               accum[value] = label;
               return accum;
             }, {} as Record<string, string>)
             : undefined;
 
-        if (isFilteringEnabled && sources.length === 0) {
-          console.error(
+          if (isFilteringEnabled && sources.length === 0) {
+            console.error(
               'enable_source_filters is set to "True" but sources is empty. Define some sources for filtering or set enable_source_filters to "False"'
-          );
-        }
+            );
+          }
 
-        setFilters({
-          isEnabled: isFilteringEnabled,
-          allSources: allSources,
-          sources: sources,
-          sourceValueToLabelMap: sourceValueToLabelMap,
-        });
+          setFilters({
+            isEnabled: isFilteringEnabled,
+            allSources: allSources,
+            sources: sources,
+            sourceValueToLabelMap: sourceValueToLabelMap,
+          });
 
-        setSummary({
-          defaultLanguage: validateLanguage(
+          setSummary({
+            defaultLanguage: validateLanguage(
               config_summary_default_language as SummaryLanguage,
               "auto"
-          ),
-          summaryNumResults: config_summary_num_results ?? 7,
-          summaryNumSentences: config_summary_num_sentences ?? 3,
-          summaryPromptName:
+            ),
+            summaryNumResults: config_summary_num_results ?? 7,
+            summaryNumSentences: config_summary_num_sentences ?? 3,
+            summaryPromptName:
               config_summary_prompt_name ?? "vectara-summary-ext-v1.2.0",
-          hfToken: config_hf_token ?? "",
-          summaryEnableHem: isTrue(config_summary_enable_hem) ?? false,
-        });
+            hfToken: config_hf_token ?? "",
+            summaryEnableHem: isTrue(config_summary_enable_hem) ?? false,
+          });
 
-        setSearchHeader({
-          logo: {
-            link: config_search_logo_link,
-            src: config_search_logo_src,
-            alt: config_search_logo_alt,
-            height: config_search_logo_height,
-          },
-          title: config_search_title,
-          description: config_search_description,
-          placeholder: config_search_placeholder,
-        });
+          setSearchHeader({
+            logo: {
+              link: config_search_logo_link,
+              src: config_search_logo_src,
+              alt: config_search_logo_alt,
+              height: config_search_logo_height,
+            },
+            title: config_search_title,
+            description: config_search_description,
+            placeholder: config_search_placeholder,
+          });
 
-        setAuth({
-          isEnabled: isTrue(config_authenticate),
-          googleClientId: config_google_client_id,
-        });
+          setAuth({
+            isEnabled: isTrue(config_authenticate),
+            googleClientId: config_google_client_id,
+          });
 
-        setAnalytics({
-          googleAnalyticsTrackingCode: config_google_analytics_tracking_code,
-          fullStoryOrgId: config_full_story_org_id,
-          gtmContainerId: config_gtm_container_id,
-        });
+          setAnalytics({
+            googleAnalyticsTrackingCode: config_google_analytics_tracking_code,
+            fullStoryOrgId: config_full_story_org_id,
+            gtmContainerId: config_gtm_container_id,
+          });
 
-        setRerank({
-          isEnabled: isTrue(config_mmr) || isTrue(config_rerank),
-          numResults: isTrue(config_mmr)
+          setRerank({
+            isEnabled: isTrue(config_mmr) || isTrue(config_rerank),
+            numResults: isTrue(config_mmr)
               ? (config_mmr_num_results ?? 50)
               : config_rerank_num_results ?? rerank.numResults,
-          id: isTrue(config_mmr) ? mmr_reranker_id : normal_reranker_id,
-          diversityBias: config_mmr_diversity_bias ?? rerank.diversityBias ?? 0.3,
-        });
+            id: isTrue(config_mmr) ? mmr_reranker_id : normal_reranker_id,
+            diversityBias: config_mmr_diversity_bias ?? rerank.diversityBias ?? 0.3,
+          });
 
-        setHybrid({
-          numWords: config_hybrid_search_num_words ?? hybrid.numWords,
-          lambdaLong: config_hybrid_search_lambda_long ?? hybrid.lambdaLong,
-          lambdaShort: config_hybrid_search_lambda_short ?? hybrid.lambdaShort,
-        });
+          setHybrid({
+            numWords: config_hybrid_search_num_words ?? hybrid.numWords,
+            lambdaLong: config_hybrid_search_lambda_long ?? hybrid.lambdaLong,
+            lambdaShort: config_hybrid_search_lambda_short ?? hybrid.lambdaShort,
+          });
         } else {
-          if(window.location.href.includes("mem_")){
+          if (window.location.href.includes("mem_")) {
             console.log("mem exists")
 
-            segmentAnalytics.identify(memid,{"visited":"sci-hub.bot"})
+            segmentAnalytics.identify(memid, { "visited": "sci-hub.bot" })
             segmentAnalytics.page("sci-hub.bot")
             segmentAnalytics.track('sci-hub.bot')
           }
           else {
-            if(window.location.href.includes("utm_campaign")){
+            if (window.location.href.includes("utm_campaign")) {
               segmentAnalytics.page("sci-hub.bot")
-              segmentAnalytics.identify(memid,{"visited":"sci-hub.bot"})
+              segmentAnalytics.identify(memid, { "visited": "sci-hub.bot" })
               segmentAnalytics.track('KeymateGPTRedirect')
             }
 
@@ -561,9 +561,200 @@ export const ConfigContextProvider = ({ children }: Props) => {
           }
           return;
         }
-      }else{
-        setIsConfigLoaded(true)
-        return;
+      } else {
+        config = prefixConfig(process.env, "REACT_APP_");
+        const questions = process.env.REACT_APP_questions;
+        if (questions) {
+          setExampleQuestions(JSON.parse(questions));
+        }
+
+        setIsConfigLoaded(true);
+
+      const missingConfigProps = requiredConfigVars.reduce(
+        (accum, configVarName) => {
+          if (config[`config_${configVarName}` as ConfigProp] === undefined)
+            accum.push(configVarName);
+          return accum;
+        },
+        [] as string[]
+      );
+      setMissingConfigProps(missingConfigProps);
+
+      const {
+        // Search
+        config_endpoint,
+        config_corpus_id,
+        config_customer_id,
+        config_api_key,
+        config_hf_token,
+
+        // App
+        config_ux,
+        config_app_title,
+        config_enable_app_header,
+        config_enable_app_footer,
+
+        // Filters
+        config_enable_source_filters,
+        config_all_sources,
+        config_sources,
+
+        // App header
+        config_app_header_logo_link,
+        config_app_header_logo_src,
+        config_app_header_logo_alt,
+        config_app_header_logo_height,
+        config_app_header_learn_more_link,
+        config_app_header_learn_more_text,
+
+        // Search header
+        config_search_logo_link,
+        config_search_logo_src,
+        config_search_logo_alt,
+        config_search_logo_height,
+        config_search_title,
+        config_search_description,
+        config_search_placeholder,
+
+        // Auth
+        config_authenticate,
+        config_google_client_id,
+
+        // Analytics
+        config_google_analytics_tracking_code,
+        config_full_story_org_id,
+        config_gtm_container_id,
+
+        // rerank
+        config_rerank,
+        config_rerank_num_results,
+
+        // MMR
+        config_mmr,
+        config_mmr_diversity_bias,
+        config_mmr_num_results,
+
+        // hybrid search
+        config_hybrid_search_num_words,
+        config_hybrid_search_lambda_long,
+        config_hybrid_search_lambda_short,
+
+        // Summary
+        config_summary_default_language,
+        config_summary_num_results,
+        config_summary_num_sentences,
+        config_summary_prompt_name,
+        config_summary_enable_hem,
+      } = config;
+
+      setUxMode(config_ux ?? "summary");
+
+      setSearch({
+        endpoint: config_endpoint,
+        corpusId: config_corpus_id,
+        customerId: config_customer_id,
+        apiKey: config_api_key,
+      });
+
+      setApp({
+        title: config_app_title ?? "",
+        isHeaderEnabled: isTrue(config_enable_app_header ?? "True"),
+        isFooterEnabled: isTrue(config_enable_app_footer ?? "True"),
+      });
+
+      setAppHeader({
+        logo: {
+          link: config_app_header_logo_link,
+          src: config_app_header_logo_src,
+          alt: config_app_header_logo_alt,
+          height: config_app_header_logo_height,
+        },
+        learnMore: {
+          link: config_app_header_learn_more_link,
+          text: config_app_header_learn_more_text,
+        },
+      });
+
+      const isFilteringEnabled = isTrue(config_enable_source_filters);
+      const allSources =
+        config_all_sources === undefined ? true : isTrue(config_all_sources);
+
+      const sources =
+        config_sources?.split(",").map((source) => ({
+          value: source.toLowerCase(),
+          label: source,
+        })) ?? [];
+
+      const sourceValueToLabelMap = sources.length
+        ? sources.reduce((accum, { label, value }) => {
+            accum[value] = label;
+            return accum;
+          }, {} as Record<string, string>)
+        : undefined;
+
+      if (isFilteringEnabled && sources.length === 0) {
+        console.error(
+          'enable_source_filters is set to "True" but sources is empty. Define some sources for filtering or set enable_source_filters to "False"'
+        );
+      }
+
+      setFilters({
+        isEnabled: isFilteringEnabled,
+        allSources: allSources,
+        sources: sources,
+        sourceValueToLabelMap: sourceValueToLabelMap,
+      });
+
+      setSummary({
+        defaultLanguage: validateLanguage(
+          config_summary_default_language as SummaryLanguage,
+          "auto"
+        ),
+        summaryNumResults: config_summary_num_results ?? 7,
+        summaryNumSentences: config_summary_num_sentences ?? 3,
+        summaryPromptName:
+          config_summary_prompt_name ?? "vectara-summary-ext-v1.2.0",
+        hfToken: config_hf_token ?? "",
+        summaryEnableHem: isTrue(config_summary_enable_hem) ?? false,
+      });
+
+      setSearchHeader({
+        logo: {
+          link: config_search_logo_link,
+          src: config_search_logo_src,
+          alt: config_search_logo_alt,
+          height: config_search_logo_height,
+        },
+        title: config_search_title,
+        description: config_search_description,
+        placeholder: config_search_placeholder,
+      });
+
+      setAuth({
+        isEnabled: isTrue(config_authenticate),
+        googleClientId: config_google_client_id,
+      });
+
+      setAnalytics({
+        googleAnalyticsTrackingCode: config_google_analytics_tracking_code,
+        fullStoryOrgId: config_full_story_org_id,
+        gtmContainerId: config_gtm_container_id,
+      });
+
+      setRerank({
+        isEnabled: isTrue(config_mmr) || isTrue(config_rerank),
+        numResults: isTrue(config_mmr)
+          ? (config_mmr_num_results ?? 50)
+          : config_rerank_num_results ?? rerank.numResults,
+        id: isTrue(config_mmr) ? mmr_reranker_id : normal_reranker_id,
+        diversityBias: config_mmr_diversity_bias ?? rerank.diversityBias ?? 0.3,
+      });
+
+      setHybrid({
+        numWords: config_hybrid_search_num_words ?? hybrid.numWords,
+        lambdaLong: config_hybrid_search_lambda_long ?? hybrid.lambdaLong,
+        lambdaShort: config_hybrid_search_lambda_short ?? hybrid.lambdaShort,
+      });
       }
 
     };

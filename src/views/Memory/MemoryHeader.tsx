@@ -2,7 +2,8 @@ import React from 'react'
 import { VuiButtonPrimary, VuiFlexItem } from '../../ui'
 import { FaPlus } from 'react-icons/fa6'
 import './memory.scss'
-import { FaShare } from "react-icons/fa";
+import MemorySearch from './MemorySearch';
+import { IoShareSocial } from 'react-icons/io5';
 
 function memoryHeader() {
     return (
@@ -11,8 +12,11 @@ function memoryHeader() {
         >
             <VuiFlexItem>
                 <VuiButtonPrimary color='primary' size='l' className='memoryButtons'>
-                    <FaShare />&nbsp;Share
+                    <IoShareSocial size="18px" />&nbsp;Share Your Library
                 </VuiButtonPrimary>
+            </VuiFlexItem>
+            <VuiFlexItem>
+                <MemorySearch />
             </VuiFlexItem>
             <VuiFlexItem>
                 <VuiButtonPrimary color='primary' size='l' className='memoryButtons'>

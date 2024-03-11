@@ -10,7 +10,7 @@ function MemoyContentHeader() {
             alignItems='center'
             spacing='s'
         >
-            <VuiFlexItem>
+            <VuiFlexItem className='checkbox'>
                 <VuiCheckbox checked={false} onChange={() => true}/>
             </VuiFlexItem>
             <VuiFlexItem className='header1'>

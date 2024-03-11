@@ -1,13 +1,22 @@
 @import "../../ui/styleUtils/index.scss";
+@import url("https://fonts.googleapis.com/css2?family=Madimi+One&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
 
 .appHeader {
-  position: fixed;
-  width: 100vw;
-  background-color: $colorLightShade;
+  width: 55vw;
+  background-color: $colorHeader;
   padding: $sizeXs $sizeM;
   z-index: 10;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
-    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  border-radius: 30px;
+}
+
+.headerWrapper {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  position: fixed;
+  padding: $sizeS $sizeM;
+  z-index: 10;
 }
 
 .appHeaderLogo {
@@ -16,4 +25,31 @@
 
 .navItem {
   font-weight: bold !important;
+  color: $navItemColor !important;
+  text-decoration: none;
+}
+
+.loginButton {
+  font-weight: bold !important;
+  color: $colorPrimary !important;
+}
+
+.marker {
+  font-size: 20px !important;
+  font-weight: bold !important;
+  color: $colorPrimary !important;
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  letter-spacing: 1px;
+}
+
+.active {
+  text-underline-offset: 5px;
+  text-decoration: underline;
+  color: $colorPrimary !important;
+}
+
+.navItemContainer {
+  display: flex;
+  justify-content: center !important;
 }
