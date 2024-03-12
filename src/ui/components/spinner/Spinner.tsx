@@ -28,7 +28,7 @@ export const VuiSpinner = ({ size = "m" }: Props) => {
         xmlSpace="preserve"
       >
         <g>
-          <path fill="#d7c3fc" d="M99.359,10.919a60.763,60.763,0,1,0,0,106.162A63.751,63.751,0,1,1,99.359,10.919Z" />
+          <path fill="#dbfcf4" d="M99.359,10.919a60.763,60.763,0,1,0,0,106.162A63.751,63.751,0,1,1,99.359,10.919Z" />
           <animateTransform
             attributeName="transform"
             type="rotate"
@@ -39,7 +39,7 @@ export const VuiSpinner = ({ size = "m" }: Props) => {
           />
         </g>
         <g>
-          <path fill="#ab81fa" d="M28.641,117.081a60.763,60.763,0,1,0,0-106.162A63.751,63.751,0,1,1,28.641,117.081Z" />
+          <path fill="#41c5a4" d="M28.641,117.081a60.763,60.763,0,1,0,0-106.162A63.751,63.751,0,1,1,28.641,117.081Z" />
           <animateTransform
             attributeName="transform"
             type="rotate"
@@ -50,7 +50,7 @@ export const VuiSpinner = ({ size = "m" }: Props) => {
           />
         </g>
         <g>
-          <path fill="#7027f6" d="M117.081,99.313a60.763,60.763,0,1,0-106.162,0A63.751,63.751,0,1,1,117.081,99.313Z" />
+          <path fill="#2ec29d" d="M117.081,99.313a60.763,60.763,0,1,0-106.162,0A63.751,63.751,0,1,1,117.081,99.313Z" />
           <animateTransform
             attributeName="transform"
             type="rotate"
