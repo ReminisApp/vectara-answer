@@ -14,7 +14,7 @@ function MemoryItem() {
             spacing='s'
         >
             <VuiFlexItem>
-                <VuiCheckbox checked={false} onChange={() => true} />
+                <VuiCheckbox checked={true} onChange={() => true} />
             </VuiFlexItem>
             <VuiFlexItem className='header1 pdfName'>
                 <FaRegFilePdf size={"30px"} color='red' />

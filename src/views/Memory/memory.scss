@@ -19,7 +19,7 @@ $appHeaderHeight: 80px;
 
 .memoryHeader {
   display: flex;
-  gap: 4;
+  gap: 4px;
   align-items: center;
   justify-content: space-between;
   padding: $sizeS 0;
@@ -38,9 +38,45 @@ $appHeaderHeight: 80px;
 }
 
 .memoryButtons {
-  border-radius: 30px !important;
+  border-radius: 6px !important;
   display: flex;
   flex-direction: row !important;
   align-items: center;
-  gap: 5px;
+  gap: 2px;
+  padding: 20px  $sizeM !important;
+  font-weight: bold !important;
+}
+
+.new-multiple {
+  gap: 20px;
+}
+
+.multipleChoice {
+  background-color: $colorPrimary;
+  padding: 4px $sizeL;
+  border-radius: 50px;
+  font-size: 16px !important;
+  color: white !important;
+  font-weight: bold !important;
+  gap: 10px;
+  width: fit-content;
+  left: 25rem;
+}
+
+.selected {
+  margin: 0 5px !important;
+}
+
+.selected * {
+  color: white !important;
+  font-size: 16px !important;
+}
+
+.icon {
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.1);
+    transition: 0.1s ease all;
+  }
 }

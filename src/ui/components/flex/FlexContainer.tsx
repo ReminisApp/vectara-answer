@@ -53,7 +53,7 @@ export const VuiFlexContainer = ({
   alignItems = "stretch",
   direction = "row",
   justifyContent = "start",
-  spacing = "m",
+  spacing = "none",
   wrap,
   className,
   fullWidth,
