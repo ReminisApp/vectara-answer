@@ -35,7 +35,7 @@ export const AppFooter = () => {
 
             <div>
               <VuiButtonPrimary
-                color="accent"
+                color="primary"
                 size="m"
                 href="https://help.keymate.ai"
                 target="_blank"
