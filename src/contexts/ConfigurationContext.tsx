@@ -8,9 +8,6 @@ import {
 
 import axios from "axios";
 import { AnalyticsBrowser } from '@segment/analytics-next'
-
-export const segmentAnalytics = AnalyticsBrowser.load({ writeKey: 'dJI7GE43YVyFuVEnu3MBTXkFMNBEk1eM' })
-
 import {
   SummaryLanguage,
   SUMMARY_LANGUAGES,
@@ -18,6 +15,10 @@ import {
   normal_reranker_id,
   mmr_reranker_id,
 } from "../views/search/types";
+
+export const segmentAnalytics = AnalyticsBrowser.load({ writeKey: 'dJI7GE43YVyFuVEnu3MBTXkFMNBEk1eM' })
+
+
 
 interface Config {
   // Search
