@@ -207,7 +207,7 @@ export const SearchControls = ({ hasQuery }: Props) => {
                     margin: 0,
                     marginBottom: "5px"
                   }}>Results are based on: {doiQValue ? doiQValue : "All Papers"}</p>
-                  {(!rawSummary && isSearching) &&
+                  {(rawSummary && !isSearching) &&
                     <VuiText className="resultText">
                       Retrieved {numSearchResults} search
                       <VuiButtonSecondary
